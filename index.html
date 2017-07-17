@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Melbourne Pedestrian Counting System</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+<!-- New Humphrey -->
+<link rel = "stylesheet" type = "text/css" href = "style/style.css" />
+<style>
+  
+</style>
+</head>
+<body align=center>
+<div id="header" align=center>
+	<h2 id="mytitle">Melbourne Pedestrian Data Visualisation</h2>
+	<div id="choices">
+		<label>Date: </label><input class="selectDate" type="date" title= "Select date to display" id="mydate"/>
+		<label id="or">Or </label>
+		<select class="option selectEvent" id="newIncident" title= "Select event to display">
+		<option selected="selected" value="2013-01-01">Select event</option>
+		<!--<option value="2013-01-01">New Year 2013</option> -->
+		<option value="2013-01-26">Australia Day 2013</option>
+		<option value="2013-02-10">Lunar New year 2013</option>
+		<option value="2013-02-23">White Night 2013</option>
+		<option value="2013-04-25">Anzac Day 2013</option>
+		<option value="2013-09-07">Federal Elections 2013</option>
+		<option value="2013-12-25">Christmas 2013</option>
+		</select>
+		
+		<label>Hour (24): </label><input class="selectTime" type="number" title= "Select hour to display" id="mytime" value="0" min="0" max="23"/>
+		<input type="button" title= "Play / Stop animation" id="play" value="Play"/>
+</div>
+
+
+	
+</div>
+<div id="container">
+	<div id="weekday">
+		<h4></h4>
+	</div>
+	<div id="temp">
+		<h4><em>Temperature (&deg;C)</em></h4>
+			<ul id="list"></ul>
+	</div>
+</div>
+<div id="map"></div>
+<div id="categories"><h3 style="float: left">Sensor Location Categories</h3></div>
+<div id="footer">
+	<!--<input id="myslider" type="range" style="width:800px"  min="0" max="100" onchange="sliderChanged(this)" />-->
+</div>
+    <svg class="canvas" width="960px" height="600px"></svg>
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
+
