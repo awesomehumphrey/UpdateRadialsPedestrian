@@ -134,12 +134,18 @@ Data.readData((data_locs, data_counts, data_temp) => {
   /// TODO: use data to create maxs and mins for 
 
 });
-
+//Function for normalising the values between a range
+Array.prototype.scaleBetween = function(scaledMin, scaledMax){
+	var max = Math.max.apply(Math, this);
+	var min = Math.min.apply(Math, this);
+	return this.map(num => (scaledMax - scaledMin) * (num - min) / (max - min) + scaledMin);
+}
 function prepareDonutData(daily_counts, data_temp, date_idx) {
 
   //console.log(daily_counts);
   var result = daily_counts[date_idx];
-  var baa = result.map(function(x) {return x * 2});
+  //var baa = result.map(function(x) {return x * 2});
+  result = result.scaleBetween(4, 20); //normalising the values between 5 and 20
   
   console.log(result);
   return result;
@@ -369,6 +375,7 @@ dateInput.addEventListener("input", function(){
     updateSensors();
 	updateTemperature();
 	updateWeekday();
+	stop();//stop animation
 });
 
 timeInput.addEventListener("click", function(){
@@ -435,6 +442,7 @@ element.addEventListener("change", function(){
 	updateSensors();
 	updateTemperature();
 	updateWeekday();
+	stop();//stop animation
 });
 
 function updateSensors(){
@@ -512,7 +520,7 @@ function updateSensors(){
 	d3.selectAll("polygon").remove(); //remove all clock radials on update
 	for(var i in donuts){ // and then update donut object members
 		donuts[i].shown = false;
-		donuts[i].keep = !donuts[i].keep;
+		//donuts[i].keep = !donuts[i].keep;
 	}
 }
 
