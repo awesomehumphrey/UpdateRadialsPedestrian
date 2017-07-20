@@ -224,7 +224,7 @@ function createMap(locs, data_counts, temp_data, callback){
   locs.map( function(d){ var newPoint = map.latLngToLayerPoint( [d.Latitude, d.Longitude] ); d["lpoints"] = { 'x' : newPoint.x, 'y' : newPoint.y }; return d; } );
   
   var loctypes =["Attraction","Dining","Entertainment","Housing","Library","Meeting Point","Office","Park","Shopping","Station","Roadway","University"];
-  var mycolor = d3.scaleOrdinal(['FF00FF','32CD32','#002080','800000','#b300b3','#336600','#660066','2F4F4F','CD5C5C','#7575a3','FFA07A','BDB76B']);			//['#595AB7','#A57706','#D11C24','#C61C6F','#BD3613','#2176C7','#259286','#738A05']     d3.schemeCategory20
+  var mycolor = d3.scaleOrdinal(['#FF00FF','#32CD32','#002080','#800000','#b300b3','#336600','#660066','#2F4F4F','#CD5C5C','#7575a3','#FFA07A','#BDB76B']);			//['#595AB7','#A57706','#D11C24','#C61C6F','#BD3613','#2176C7','#259286','#738A05']     d3.schemeCategory20
 
   g.selectAll("circle").data( locs ).enter().append("circle")
     .attr("cx", function(d){ return d.lpoints.x } )
@@ -337,7 +337,7 @@ var slider = document.getElementById("myslider");
 
 dateInput.addEventListener("input", function(){
     clearTitle();
-     
+    updateEvents(); //populate event list based on year 
     switch(document.getElementById("mydate").value) {  //dateInput is used to update the eventinput
         /* case "2013-01-01":
             document.getElementById("newIncident").selectedIndex = 1;
@@ -366,6 +366,66 @@ dateInput.addEventListener("input", function(){
 		case "2013-12-25":
 			document.getElementById("newIncident").selectedIndex = 6;
             //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[6].text;
+			break;
+		case "2014-01-26":
+            document.getElementById("newIncident").selectedIndex = 1;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[1].text;
+            break;
+		case "2014-01-31":
+            document.getElementById("newIncident").selectedIndex = 2;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[2].text;
+            break;
+		case "2014-02-23":
+            document.getElementById("newIncident").selectedIndex = 3;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[3].text;
+            break;
+		case "2014-04-25":
+            document.getElementById("newIncident").selectedIndex = 4;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[4].text;
+            break;
+		case "2014-12-25":
+			document.getElementById("newIncident").selectedIndex = 5;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[5].text;
+			break;
+		case "2015-01-26":
+            document.getElementById("newIncident").selectedIndex = 1;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[1].text;
+            break;
+        case "2015-02-19":
+            document.getElementById("newIncident").selectedIndex = 2;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[2].text;
+            break;
+        case "2015-02-21":
+            document.getElementById("newIncident").selectedIndex = 3;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[3].text;
+            break;
+        case "2015-04-25":
+            document.getElementById("newIncident").selectedIndex = 4;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[4].text;
+            break;
+		case "2015-12-25":
+			document.getElementById("newIncident").selectedIndex = 5;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[5].text;
+			break;
+		case "2016-01-26":
+            document.getElementById("newIncident").selectedIndex = 1;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[1].text;
+            break;
+        case "2016-02-08":
+            document.getElementById("newIncident").selectedIndex = 2;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[2].text;
+            break;
+        case "2016-02-21":
+            document.getElementById("newIncident").selectedIndex = 3;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[3].text;
+            break;
+        case "2016-04-25":
+            document.getElementById("newIncident").selectedIndex = 4;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[4].text;
+            break;
+		case "2016-07-02":
+			document.getElementById("newIncident").selectedIndex = 5;
+            //document.getElementById("mytitle").innerHTML = document.getElementById("newIncident").options[5].text;
 			break;
         default:
             document.getElementById("newIncident").selectedIndex = 0; 
@@ -563,6 +623,59 @@ function updateWeekday(){
      
     var wd = document.getElementById('weekday');
     wd.innerHTML = "<h4><em>"+myVar+"</em></h4>";   
+}
+
+function updateEvents(){
+	var selectedDateText = document.getElementById("mydate").value;
+	var selectedDate = new Date(selectedDateText);
+	var year = selectedDate.getFullYear();
+	
+	var opt = document.getElementById('newIncident');
+	
+	switch(year) {
+    case 2013:
+        opt.innerHTML = '<option selected="selected" value="2013-01-01">Select event</option>'+
+		'<option value="2013-01-26">Australia Day 2013</option>'+
+		'<option value="2013-02-10">Lunar New year 2013</option>'+
+		'<option value="2013-02-23">White Night 2013</option>'+
+		'<option value="2013-04-25">Anzac Day 2013</option>'+
+		'<option value="2013-09-07">Federal Elections 2013</option>'+
+		'<option value="2013-12-25">Christmas 2013</option>';
+        break;
+    case 2014:
+        opt.innerHTML = '<option selected="selected" value="2014-01-01">Select event</option>'+
+		'<option value="2014-01-26">Australia Day 2014</option>'+
+		'<option value="2014-01-31">Lunar New year 2014</option>'+
+		'<option value="2014-02-23">White Night 2014</option>'+
+		'<option value="2014-04-25">Anzac Day 2014</option>'+
+		'<option value="2014-12-25">Christmas 2014</option>';
+        break;
+	case 2015:
+        opt.innerHTML = '<option selected="selected" value="2015-01-01">Select event</option>'+
+		'<option value="2015-01-26">Australia Day 2015</option>'+
+		'<option value="2015-02-19">Lunar New year 2015</option>'+
+		'<option value="2015-02-21">White Night 2015</option>'+
+		'<option value="2015-04-25">Anzac Day 2015</option>'+
+		'<option value="2015-12-25">Christmas 2015</option>';
+        break;
+	case 2016:
+       opt.innerHTML = '<option selected="selected" value="2016-01-01">Select event</option>'+
+		'<option value="2016-01-26">Australia Day 2016</option>'+
+		'<option value="2016-02-08">Lunar New year 2016</option>'+
+		'<option value="2016-02-21">White Night 2016</option>'+
+		'<option value="2016-04-25">Anzac Day 2016</option>'+
+		'<option value="2016-07-02">Federal Elections 2016</option>'
+        break;
+    default:
+        opt.innerHTML = '<option selected="selected" value="2013-01-01">Select event</option>'+
+		'<option value="2013-01-26">Australia Day 2013</option>'+
+		'<option value="2013-02-10">Lunar New year 2013</option>'+
+		'<option value="2013-02-23">White Night 2013</option>'+
+		'<option value="2013-04-25">Anzac Day 2013</option>'+
+		'<option value="2013-09-07">Federal Elections 2013</option>'+
+		'<option value="2013-12-25">Christmas 2013</option>';
+	} 
+		
 }
 
 //transport_select.setAttribute("onchange", function(){toggleSelect(transport_select_id);});
