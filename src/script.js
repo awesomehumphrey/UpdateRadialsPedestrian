@@ -154,7 +154,7 @@ function prepareDonutData(daily_counts, data_temp, date_idx) {
 
 var hourMin = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 function createDonut(cx, cy, hourData, global_color, j) { // No longer need to pass inner_radius as parameter
-
+console.log(hourData);
     const svg = d3.select("svg");
 
     //set the min and max radius values for the donut
@@ -436,7 +436,7 @@ dateInput.addEventListener("input", function(){
 	updateTemperature();
 	updateWeekday();
 	stop();//stop animation
-	removeDonut(); //remove all clock radials on event update
+	//removeDonut(); //remove all clock radials on event update. This has been moved to updateSensors()
 	
 });
 
@@ -505,7 +505,7 @@ element.addEventListener("change", function(){
 	updateTemperature();
 	updateWeekday();
 	stop();//stop animation
-	removeDonut(); //remove all clock radials on event update
+	//removeDonut(); //remove all clock radials on event update. This has been moved to updateSensors()
 	
 });
 
@@ -581,11 +581,7 @@ function updateSensors(){
 							return radius;
 	});
 	
-	/* d3.selectAll("polygon").remove(); //remove all clock radials on date/event/time update. 
-	for(var i in donuts){ // and then update donut object members
-		donuts[i].shown = false;
-		//donuts[i].keep = !donuts[i].keep;
-	} */
+	removeDonut();//remove all clock radials on date/event/time update. 
 }
 
 function updateTemperature(){
