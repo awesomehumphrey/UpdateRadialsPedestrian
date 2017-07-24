@@ -436,6 +436,8 @@ dateInput.addEventListener("input", function(){
 	updateTemperature();
 	updateWeekday();
 	stop();//stop animation
+	removeDonut(); //remove all clock radials on event update
+	
 });
 
 timeInput.addEventListener("click", function(){
@@ -503,6 +505,8 @@ element.addEventListener("change", function(){
 	updateTemperature();
 	updateWeekday();
 	stop();//stop animation
+	removeDonut(); //remove all clock radials on event update
+	
 });
 
 function updateSensors(){
@@ -577,11 +581,11 @@ function updateSensors(){
 							return radius;
 	});
 	
-	d3.selectAll("polygon").remove(); //remove all clock radials on update
+	/* d3.selectAll("polygon").remove(); //remove all clock radials on date/event/time update. 
 	for(var i in donuts){ // and then update donut object members
 		donuts[i].shown = false;
 		//donuts[i].keep = !donuts[i].keep;
-	}
+	} */
 }
 
 function updateTemperature(){
@@ -676,6 +680,14 @@ function updateEvents(){
 		'<option value="2013-12-25">Christmas 2013</option>';
 	} 
 		
+}
+
+function removeDonut(){
+	d3.selectAll("polygon").remove(); //remove all clock radials on date/event/time update. 
+	for(var i in donuts){ // and then update donut object members
+		donuts[i].shown = false;
+		//donuts[i].keep = !donuts[i].keep;
+	} 
 }
 
 //transport_select.setAttribute("onchange", function(){toggleSelect(transport_select_id);});
