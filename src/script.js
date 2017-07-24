@@ -682,7 +682,7 @@ function removeDonut(){
 	d3.selectAll("polygon").remove(); //remove all clock radials on date/event/time update. 
 	for(var i in donuts){ // and then update donut object members
 		donuts[i].shown = false;
-		//donuts[i].keep = !donuts[i].keep;
+		donuts[i].keep = false;
 	} 
 }
 
